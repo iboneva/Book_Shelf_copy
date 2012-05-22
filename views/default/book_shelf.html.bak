@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<h1>You book shelves!</h1>
+{{if len(shelves):}}
+    {{for shelf in shelves:}}
+        {{=shelf.Shelf_Name}}
+    {{pass}}
+{{else:}}
+    No shelves made
+{{pass}}

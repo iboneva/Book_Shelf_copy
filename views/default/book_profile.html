@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+{{if len(book_profiles):}}
+    {{for book_profile in book_profiles:}}
+        <p>{{=book_profile.Title}}</p>
+    {{pass}}
+{{else:}}
+    <p>no profiles that match</p>
+{{pass}}
