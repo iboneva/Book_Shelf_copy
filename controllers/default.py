@@ -28,8 +28,8 @@ def create_user_profile():
 def update_user_profile():
     record = db.User_Profile(request.args(0)) or redirect (URL('index'))
     if (auth.user.id!=record.created_by):
-    	session.flash = 'access denied'
-    	redirect(URL('index'))
+        session.flash = 'access denied'
+        redirect(URL('index'))
     form = SQLFORM(db.User_Profile, record)
     if form.process().accepted:
         session.flash = "Form Accepted"
@@ -70,21 +70,28 @@ def book_profile():
 
 @auth.requires_login() 
 def create_book_shelf():
-	form = SQLFORM(db.Book_Shelf)
-	if form.process().accepted:
-		session.flash = "Form Accepted"
-	else:
-		response.flash = "WRONG!"
-	return locals()
+    form = SQLFORM(db.Book_Shelf)
+    if form.process().accepted:
+        session.flash = "Form Accepted"
+    else:
+        response.flash = "WRONG!"
+    return locals()
 
 @auth.requires_login() 
 def update_book_shelf():
+    record = db.Book_Shelf(request.args(0)) or redirect (URL('index'))
+    form = SQLFORM(db.Book_Shelf, record)
+    if form.process().accepted:
+        session.flash = "Form Accepted"
+        redirect(URL('book_shelf'))
+    else:
+        response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()
     
 @auth.requires_login()      
 def book_shelf():
-	shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
-	return locals()
+    shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
+    return locals()
  
 @auth.requires_login()    
 def comments():

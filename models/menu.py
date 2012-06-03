@@ -6,7 +6,6 @@
 #########################################################################
 
 response.title = ' '.join(word.capitalize() for word in request.application.split('_'))
-response.subtitle = T('customize me!')
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
 response.meta.author = 'Your Name <you@example.com>'
@@ -25,20 +24,20 @@ response.google_analytics_id = None
 response.menu = [
     (T('Home'), False, URL('default','index'), []),
     (T('User Profile'), False, None, [
-    	(T('User Profile'), False, URL('default','user_profile')),
-    	(T('Create User Profile'), False, URL('default','create_user_profile')),
-    	(T('Update User Profile'), False, URL('default','update_user_profile'))
-    	]),
-	(T('Book'), False, None,  [
-		(T('Book Profile'), False, URL('default', 'book_profile')),
-		(T('Create Book Profile'), False, URL('default', 'create_book_profile')),
-		(T('Update Book Profile'), False, URL('default', 'update_book_profile'))
-		]),
-	(T('Book Shelf'), False, None,  [
-		(T('Book Shelf'), False, URL('default', 'book_shelf')),
-		(T('Create Book Shelf'), False, URL('default', 'create_book_shelf')),
-		(T('Update Book Shelf'), False, URL('default', 'update_book_shelf'))
-		])
+        (T('User Profile'), False, URL('default','user_profile')),
+        (T('Create User Profile'), False, URL('default','create_user_profile')),
+        (T('Update User Profile'), False, URL('default','update_user_profile'))
+        ]),
+    (T('Book'), False, None,  [
+        (T('Book Profile'), False, URL('default', 'book_profile')),
+        (T('Create Book Profile'), False, URL('default', 'create_book_profile')),
+        (T('Update Book Profile'), False, URL('default', 'update_book_profile'))
+        ]),
+    (T('Book Shelf'), False, None,  [
+        (T('Book Shelf'), False, URL('default', 'book_shelf')),
+        (T('Create Book Shelf'), False, URL('default', 'create_book_shelf')),
+        (T('Update Book Shelf'), False, URL('default', 'update_book_shelf'))
+        ])
     ]
 
 #########################################################################
@@ -114,4 +113,3 @@ def _():
                 ]
          )]
 _()
-
