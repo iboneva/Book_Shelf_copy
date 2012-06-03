@@ -1,5 +1,14 @@
-{{left_sidebar_enabled,right_sidebar_enabled=False,True}}
+{{extend 'mylayout.html'}}
+
 {{extend 'layout.html'}}
 
-{{if 'message' in globals():}}
-<h3>{{=message}}</h3>
+<h1>Your book shelves!</h1>
+{{if len(shelves):}}
+    {{for shelf in shelves:}}
+        <p>{{=A(shelf.Shelf_Name, _href=URL('book_shelf', args=shelf.id))}}</p>
+    {{pass}}
+    <p>{{=A('Make a book shelf!', _href=URL('create_book_shelf'))}}</p>
+{{else:}}
+    No shelves made
+    {{=A('Make a book shelf!', _href=URL('create_book_shelf'))}}
+{{pass}}
