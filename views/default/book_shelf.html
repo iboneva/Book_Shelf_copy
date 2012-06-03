@@ -1,10 +1,22 @@
+<<<<<<< HEAD
 {{extend 'mylayout.html'}}
 <h1>You book shelves!</h1>
 {{if len(shelves):}}
     {{for shelf in shelves:}}
         {{=shelf.Shelf_Name}}
     {{pass}}
+=======
+{{extend 'layout.html'}}
+<h1>{{=shelf.Shelf_Name}}</h1>
+{{=form}}
+
+{{if len(books):}}
+	{{for book in books:}}
+		<p>{{=book.id}}</p>
+	{{pass}}
+>>>>>>> Book profile
 {{else:}}
-    No shelves made
-    {{=A('Make a book shelf!', _href=URL('create_book_shelf'))}}
+	No books
 {{pass}}
+	
+
