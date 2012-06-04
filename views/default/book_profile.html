@@ -18,7 +18,7 @@
           	<div class="box_top"></div>
             <div class="box_center">
             <div class="prod_title">Details</div>
-            <p class="details">Author: {{=book.Author_First_Name}} {{=book.Author_Last_Name}}<br /><br />
+            <p class="details">Author: {{=book.Author}}<br /><br />
             					{{=book.Details}}<br /><br />
             					Genre: {{=book.Genre}}<br/>
             					Publisher: {{=book.Publisher}}<br />
@@ -45,4 +45,39 @@
     
 </div>
 
+<div id ="comments">
+	{{for comment in comments:}}
+	<div>
+		On {{=comment.created_on}}	{{="%(first_name)s %(last_name)s" % comment.created_by}} says:<br/>
+		{{=comment.Body}}
+	</div>
+	{{pass}}
+</div>
+
+<textarea id="newcomment"></textarea>
+<button id = "mybutton">post comment</button>
+
+<script>
+if(typeof(String.prototype.trim) === "undefined"){
+    String.prototype.trim = function() {
+        return String(this).replace(/^\s+|\s+$/g, '');
+    };
+}
+jQuery(function(){
+  jQuery('#mybutton').click(function(){
+	var comment = jQuery('#newcomment').val();
+	if(comment.trim()) {
+	  jQuery.post('{{=URL('post_comment',args=book)}}', 'comment='+encodeURIComponent(comment)).success(function(){
+		jQuery('#comments').append('<div>I say: '+comment+'</div>');
+		jQuery('#newcomment').val('');
+	   }).error(function(){alert('cannot post!');});
+  	};
+  });
+});
+</script>
+
+	
+	
+	
+	
 

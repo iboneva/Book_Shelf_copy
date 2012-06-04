@@ -77,7 +77,17 @@ def update_book_profile():
       
 def book_profile():
     book = db.Book_Profile(request.args(0)) or redirect (URL('index'))
+    db.Comments.Book_Profile_id.default = book.id
+    db.Comments.Book_Profile_id.readable = False
+    db.Comments.Book_Profile_id.writable = False
+    comment_form = SQLFORM(db.Comments).process()
+    comments = db(db.Comments.Book_Profile_id==book).select(orderby = db.Comments.created_on)
     return locals()
+    
+def post_comment():
+    if request.env.request_method=='POST':
+        db.Comments.Book_Profile_id.default = request.args(0)
+        db.Comments.insert(Body=request.vars.comment)
 
 @auth.requires_login() 
 def create_book_shelf():
