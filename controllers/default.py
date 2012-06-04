@@ -51,8 +51,8 @@ def profiles_list():
     return locals()
     
 def user_profile():
-	record = db.auth_user(request.args(0)) or redirect (URL('index'))
-	return locals()
+    record = db.auth_user(request.args(0)) or redirect (URL('index'))
+    return locals()
 
 @auth.requires_login() 
 def create_book_profile():
@@ -70,7 +70,7 @@ def update_book_profile():
     form = SQLFORM(db.Book_Profile, record)
     if form.process().accepted:
         session.flash = "Form Accepted"
-        redirect(URL('book_profile'))
+        redirect(URL('book_profile', args=record.id))
     else:
         response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()

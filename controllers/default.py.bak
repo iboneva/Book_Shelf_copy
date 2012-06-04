@@ -15,9 +15,9 @@ def index():
 
 @auth.requires_login()
 def create_user_bio():
-	record = db.User_Bio(created_by==auth.user.id).select()
-	if (record):
-		redirect('index')
+    record = db(db.User_Bio.created_by==auth.user.id).select()
+    if (record):
+        redirect(URL('update_user_bio'))
     form = SQLFORM(db.User_Bio)
     if form.process().accepted:
         session.flash = "Form Accepted"
@@ -28,14 +28,14 @@ def create_user_bio():
 
 @auth.requires_login() 
 def update_user_bio():
-    record = db.User_Bio(request.args(0)) or redirect (URL('create_user_bio'))
+    record = db.User_Bio(created_by=request.args(0)) or redirect(URL('create_user_bio'))
     if (auth.user.id!=record.created_by):
         session.flash = 'access denied'
         redirect(URL('index'))
     form = SQLFORM(db.User_Bio, record)
     if form.process().accepted:
         session.flash = "Form Accepted"
-        redirect(URL('user_profile'))
+        redirect(URL('my_profile'))
     else:
         response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()
@@ -47,11 +47,16 @@ def my_profile():
     return locals()
 
 def profiles_list():
-	profiles = db(db.User_Profile).select()
-	return locals()
+    profiles = db(db.auth_user).select()
+    return locals()
+    
+def user_profile():
+    record = db.auth_user(request.args(0)) or redirect (URL('index'))
+    return locals()
 
 @auth.requires_login() 
 def create_book_profile():
+	db.Book_Profile.Picture.default = URL('static', 'plugin_layout_book_store/images/bullet1.gif')
     form = SQLFORM(db.Book_Profile)
     if form.process().accepted:
         session.flash = "Form Accepted"
@@ -66,7 +71,7 @@ def update_book_profile():
     form = SQLFORM(db.Book_Profile, record)
     if form.process().accepted:
         session.flash = "Form Accepted"
-        redirect(URL('book_profile'))
+        redirect(URL('book_profile', args=record.id))
     else:
         response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()

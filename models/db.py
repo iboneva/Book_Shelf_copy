@@ -80,12 +80,14 @@ use_janrain(auth,filename='private/janrain.key')
 #########################################################################
 
 db.define_table('Book_Profile',
-    Field('Title'),
-    Field('Author'),
+    Field('ISBN', requires=IS_NOT_EMPTY()),
+    Field('Title', requires=IS_NOT_EMPTY()),
+    Field('Author', requires=IS_NOT_EMPTY()),
     Field('Genre'),
     Field('Publisher'),
     Field('Publisher_Date'),
-    Field('Link_to_Buy'),
+    Field('Picture', 'upload'),
+    Field('Details', 'text'),
     auth.signature)
 
 db.define_table('User_Bio',
@@ -112,12 +114,13 @@ db.define_table('Reviews',
     Field('Body', 'text'),
     auth.signature)
    
-db.Book_Profile.is_active.readable = db.Book_Profile.is_active.writable = False   
+db.Book_Profile.is_active.readable = db.Book_Profile.is_active.writable = False  
+db.Book_Profile.ISBN.requires = IS_NOT_IN_DB(db, db.Book_Profile.ISBN) 
+db.Book_Profile.id.readable = db.Book_Profile.id.writable = False  
    
 db.User_Bio.is_active.readable = db.User_Bio.is_active.writable = False
 
 db.Book_Shelf.is_active.readable = db.Book_Shelf.is_active.writable = False
-# db.Book_Shelf.User_Profile_id.readable = db.Book_Shelf.User_Profile_id.writable = False
 
 db.Book_Shelf_Items.is_active.readable = db.Book_Shelf_Items.is_active.writable = False
 db.Book_Shelf_Items.Book_Shelf_id.writable = db.Book_Shelf_Items.Book_Shelf_id.readable = False
@@ -132,7 +135,6 @@ db.Comments.Book_Profile_id.readable = db.Comments.Book_Profile_id.writable = Fa
 
 
 db.Reviews.Book_Profile_id.requires = IS_IN_DB(db, db.Book_Profile.id, '%(Title)s')
-#'Reviews.Book_Profile_id')
 db.Reviews.Body.requires = IS_NOT_EMPTY()
 db.Reviews.created_by.readable = db.Reviews.created_by.writable = False
 db.Reviews.created_on.readable = db.Reviews.created_on.writable = False

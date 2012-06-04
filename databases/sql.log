@@ -165,3 +165,9 @@ CREATE TABLE User_Bio(
     modified_on TIMESTAMP,
     modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
 );
+timestamp: 2012-06-04T10:30:34.447830
+ALTER TABLE Book_Profile ADD picture CHAR(512);
+timestamp: 2012-06-04T11:08:17.100020
+ALTER TABLE Book_Profile ADD details TEXT;
+timestamp: 2012-06-04T11:47:39.474525
+ALTER TABLE Book_Profile ADD isbn CHAR(512);
