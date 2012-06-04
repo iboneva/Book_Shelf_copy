@@ -10,15 +10,21 @@
 		<p class="details">
 {{if len(profiles):}}
     {{for profile in profiles:}}
+	<table>
+	<tr>
+	<td>Name: </td>
+    <td>{{=auth.user.first_name}} {{=auth.user.last_name}}</td>
+	</tr>
+	<tr>
+	<td>Favorite Book: </td>
+    <td>{{=profile.Favorite_Book}}</td>
+	</tr>
 
-    	Name: 
-        {{=profile.created_by.first_name}} {{=profile.created_by.last_name}}
-
-    	Favorite Book:
-        {{=profile.Favorite_Book}}
-
-    	Bio: 
-        {{=profile.Bio}}
+	<tr>
+	<td>Bio: </td>
+	<td>{{=profile.Bio}}</td>
+	</tr>
+	</table>
 
         
     {{pass}}
