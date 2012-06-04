@@ -171,3 +171,7 @@ timestamp: 2012-06-04T11:08:17.100020
 ALTER TABLE Book_Profile ADD details TEXT;
 timestamp: 2012-06-04T11:47:39.474525
 ALTER TABLE Book_Profile ADD isbn CHAR(512);
+timestamp: 2012-06-04T13:26:30.308832
+ALTER TABLE Book_Profile ADD author_first_name CHAR(512);
+timestamp: 2012-06-04T13:26:30.343979
+ALTER TABLE Book_Profile ADD author_last_name CHAR(512);

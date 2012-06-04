@@ -47,7 +47,7 @@ def my_profile():
     return locals()
 
 def profiles_list():
-    profiles = db(db.auth_user).select()
+    profiles = db(db.auth_user).select(orderby=db.auth_user.last_name)
     return locals()
     
 def user_profile():

@@ -17,7 +17,8 @@
 			<div class="box_top"></div>
 			<div class="box_center">
 			<div class="prod_title">{{=book.Title}}</div>
-			<p class="details">{{=book.Details}}</p>
+			<p class="details">Author: {{=book.Author_First_Name}} {{=book.Author_Last_Name}}<br />
+							{{=book.Details}}</p>
             <a href="{{=URL('book_profile', args=book.id)}}" class="more">- more details -</a>
 			<div class="clear"></div>
 			</div>
