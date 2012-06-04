@@ -24,16 +24,16 @@ I4
 sg7
 S'CHAR(1)'
 p12
-ssS'created_on'
+ssS'user_profile_id'
 p13
 (dp14
 g4
-S'datetime'
+S'reference User_Profile'
 p15
 sg6
-I5
+I3
 sg7
-S'TIMESTAMP'
+S'INTEGER REFERENCES User_Profile(id) ON DELETE CASCADE'
 p16
 ssS'created_by'
 p17
@@ -45,22 +45,22 @@ I6
 sg7
 S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
 p19
-ssS'user_profile_id'
+ssS'created_on'
 p20
 (dp21
 g4
-S'reference User_Profile'
+S'datetime'
 p22
 sg6
-I3
+I5
 sg7
-S'INTEGER REFERENCES User_Profile(id) ON DELETE CASCADE'
+S'TIMESTAMP'
 p23
 ssS'modified_on'
 p24
 (dp25
 g4
-g15
+g22
 sg6
 I7
 sg7

@@ -9,6 +9,7 @@
 ## - call exposes all registered services (none by default)
 #########################################################################
 
+@auth.requires_login()
 def index():
     shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
     return locals()
@@ -78,7 +79,7 @@ def create_book_shelf():
 
 @auth.requires_login() 
 def update_book_shelf():
-	## add book to book shelf
+    ## add book to book shelf
     record = db.Book_Shelf(request.args(0)) or redirect (URL('index'))
     db.Book_Shelf_Items.Book_Shelf_id.default = record.id
     form = SQLFORM(db.Book_Shelf_Items)  
