@@ -78,11 +78,13 @@ def create_book_shelf():
 
 @auth.requires_login() 
 def update_book_shelf():
+	## add book to book shelf
     record = db.Book_Shelf(request.args(0)) or redirect (URL('index'))
-    form = SQLFORM(db.Book_Shelf, record)
+    db.Book_Shelf_Items.Book_Shelf_id.default = record.id
+    form = SQLFORM(db.Book_Shelf_Items)  
     if form.process().accepted:
         session.flash = "Form Accepted"
-        redirect(URL('book_shelf'))
+        redirect(URL('book_shelf', args=record.id))
     else:
         response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()
@@ -92,11 +94,6 @@ def book_shelf():
     shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
     shelf = db.Book_Shelf(request.args(0)) or redirect (URL('index'))
     books = db(db.Book_Shelf_Items.Book_Shelf_id==request.args(0)).select()
-    form = SQLFORM(db.Book_Shelf_Items)
-    if form.process().accepted:
-        session.flash = "Form Accepted"
-    else:
-        response.flash = "WRONG!"
     return locals()
  
 @auth.requires_login()    

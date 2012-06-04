@@ -121,6 +121,9 @@ db.User_Profile.is_active.readable = db.User_Profile.is_active.writable = False
 
 db.Book_Shelf.is_active.readable = db.Book_Shelf.is_active.writable = False
 # db.Book_Shelf.User_Profile_id.readable = db.Book_Shelf.User_Profile_id.writable = False
+
+db.Book_Shelf_Items.is_active.readable = db.Book_Shelf_Items.is_active.writable = False
+db.Book_Shelf_Items.Book_Shelf_id.writable = db.Book_Shelf_Items.Book_Shelf_id.readable = False
     
 db.Comments.Book_Profile_id.requires = IS_IN_DB(db, db.Book_Profile.id, '%(Title)s')
 #'Comments.Book_Profile_id')
