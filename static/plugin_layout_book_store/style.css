@@ -54,6 +54,23 @@ width:628px;
 height:30px;
 padding:55px 0 0 10px;
 }
+
+.navbar{
+display: block;
+float: right;
+}
+.auth_navbar {
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FDFCDC;
+float: right;
+}
+.auth_navbar a{
+color:#4A4A4A;
+}
+.auth_navbar a:hover{
+color:#FFFFFF;
+}
 #menu ul{
 display:block;
 list-style:none;
@@ -75,7 +92,7 @@ _margin:0 2px 0 2px;
 float:left;
 text-decoration:none;
 text-align:center;
-color:#fff;
+color:#CDB79E;
 font-size:13px;
 line-height:25px;
 }
@@ -92,7 +109,7 @@ font-size:13px;
 line-height:25px;
 }
 #menu ul li a:hover{
-color:#f7a849;
+color:#FFFFFF;
 }
 /*----------------crumb_nav------------------*/
 .crumb_nav{
