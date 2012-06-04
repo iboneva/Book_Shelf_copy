@@ -1,5 +1,5 @@
 (dp1
-S'Bio'
+S'bio'
 p2
 (dp3
 S'type'
@@ -24,7 +24,7 @@ I9
 sg7
 S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
 p12
-ssS'Name'
+ssS'name'
 p13
 (dp14
 g4
@@ -77,7 +77,7 @@ I8
 sg7
 S'TIMESTAMP'
 p30
-ssS'Favorite_Book'
+ssS'favorite_book'
 p31
 (dp32
 g4
@@ -91,10 +91,11 @@ ssS'id'
 p34
 (dp35
 g4
-g34
+S'id'
+p36
 sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p36
+p37
 ss.

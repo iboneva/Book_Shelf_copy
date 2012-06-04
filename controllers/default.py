@@ -9,39 +9,50 @@
 ## - call exposes all registered services (none by default)
 #########################################################################
 
-@auth.requires_login()
 def index():
-    shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
+    books = db(db.Book_Profile).select()
     return locals()
 
 @auth.requires_login()
-def create_user_profile():
-    form = SQLFORM(db.User_Profile)
+def create_user_bio():
+    record = db(db.User_Bio.created_by==auth.user.id).select()
+    if (record):
+        redirect(URL('update_user_bio'))
+    form = SQLFORM(db.User_Bio)
     if form.process().accepted:
         session.flash = "Form Accepted"
-        redirect(URL('user_profile'))
+        redirect(URL('my_profile'))
     else:
         response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()
 
 @auth.requires_login() 
-def update_user_profile():
-    record = db.User_Profile(request.args(0)) or redirect (URL('index'))
+def update_user_bio():
+    record = db.User_Bio(created_by=request.args(0)) or redirect(URL('create_user_bio'))
     if (auth.user.id!=record.created_by):
         session.flash = 'access denied'
         redirect(URL('index'))
-    form = SQLFORM(db.User_Profile, record)
+    form = SQLFORM(db.User_Bio, record)
     if form.process().accepted:
         session.flash = "Form Accepted"
-        redirect(URL('user_profile'))
+        redirect(URL('my_profile'))
     else:
         response.flash= "This is completely wrong you weiner..TRY AGAIN!"
     return locals()
       
 @auth.requires_login() 
-def user_profile():
-    profiles = db(db.User_Profile.created_by==auth.user.id).select()
+def my_profile():
+    profiles = db(db.User_Bio.created_by==auth.user.id).select()
+    shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
     return locals()
+
+def profiles_list():
+    profiles = db(db.auth_user).select()
+    return locals()
+    
+def user_profile():
+	record = db.auth_user(request.args(0)) or redirect (URL('index'))
+	return locals()
 
 @auth.requires_login() 
 def create_book_profile():
@@ -92,7 +103,6 @@ def update_book_shelf():
     
 @auth.requires_login()      
 def book_shelf():
-    shelves = db(db.Book_Shelf.created_by==auth.user.id).select()
     shelf = db.Book_Shelf(request.args(0)) or redirect (URL('index'))
     books = db(db.Book_Shelf_Items.Book_Shelf_id==request.args(0)).select()
     return locals()

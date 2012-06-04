@@ -1,0 +1,36 @@
+{{extend 'mylayout.html'}}
+<h1>My Profile</h1>
+{{if len(profiles):}}
+    {{for profile in profiles:}}
+    	<table>
+    	<tr>
+    	<td>Name: </td>
+        <td>{{=profile.created_by.first_name}} {{=profile.created_by.last_name}}</td>
+        </tr>
+    	<tr>
+    	<td>Favorite Book: </td>
+        <td>{{=profile.Favorite_Book}}</td>
+        </tr>
+        <tr>
+    	<td>Bio: </td>
+        <td>{{=profile.Bio}}</td>
+        </tr>
+        
+    {{pass}}
+{{else:}}
+{{pass}}
+<tr>
+<td>{{=A('Update user bio', _href=URL('update_user_bio', args=auth.user.id))}}</td>
+</tr>
+</table>
+
+<h1>Your book shelves!</h1>
+{{if len(shelves):}}
+    {{for shelf in shelves:}}
+        <p>{{=A(shelf.Shelf_Name, _href=URL('book_shelf', args=shelf.id))}}</p>
+    {{pass}}
+    <p>{{=A('Make a book shelf!', _href=URL('create_book_shelf'))}}</p>
+{{else:}}
+    No shelves made
+    {{=A('Make a book shelf!', _href=URL('create_book_shelf'))}}
+{{pass}}

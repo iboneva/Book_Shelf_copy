@@ -1,9 +1,1 @@
 {{extend 'layout.html'}}
-<h1>My Profile</h1>
-{{if len(profile):}}
-    {{for profile in profiles:}}
-        <p>{{=profile.Name}}</p>
-    {{pass}}
-{{else:}}
-    <p>no profiles that match</p>
-{{pass}}

@@ -1,0 +1,8 @@
+{{extend 'mylayout.html'}}
+{{if len(profiles):}}
+    {{for profile in profiles:}}
+        <p>{{=A(profile.first_name+profile.last_name, _href=URL('user_profile', args=profile.id))}}</p>
+    {{pass}}
+{{else:}}
+    <p>No users registered</p>
+{{pass}}

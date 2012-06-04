@@ -88,15 +88,13 @@ db.define_table('Book_Profile',
     Field('Link_to_Buy'),
     auth.signature)
 
-db.define_table('User_Profile',
-    Field('Name', requires=IS_NOT_EMPTY()),
+db.define_table('User_Bio',
     Field('Favorite_Book'),
     Field('Bio', 'text'),
     auth.signature)    
 
 db.define_table('Book_Shelf',
     Field('Shelf_Name'),
-    Field('User_Profile_id', db.User_Profile),
     auth.signature)   
     
 db.define_table('Book_Shelf_Items',
@@ -116,8 +114,7 @@ db.define_table('Reviews',
    
 db.Book_Profile.is_active.readable = db.Book_Profile.is_active.writable = False   
    
-db.User_Profile.Name.requires = IS_NOT_IN_DB(db, 'User_Profile.Name')
-db.User_Profile.is_active.readable = db.User_Profile.is_active.writable = False
+db.User_Bio.is_active.readable = db.User_Bio.is_active.writable = False
 
 db.Book_Shelf.is_active.readable = db.Book_Shelf.is_active.writable = False
 # db.Book_Shelf.User_Profile_id.readable = db.Book_Shelf.User_Profile_id.writable = False

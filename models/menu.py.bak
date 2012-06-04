@@ -23,7 +23,8 @@ response.google_analytics_id = None
 
 response.menu = [
     (T('Home'), False, URL('default','index'), []),
-    (T('User Profile'), False, URL('default','update_user_profile'), [])
+    (T('Profiles'), False, URL('default','profiles_list'), []),
+    (T('My Profile'), False, URL('default','user_profile'), [])
     ]
 
 #########################################################################
