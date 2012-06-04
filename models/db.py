@@ -83,8 +83,13 @@ db.define_table('Book_Profile',
     Field('ISBN', requires=IS_NOT_EMPTY()),
     Field('Title', requires=IS_NOT_EMPTY()),
     Field('Author', requires=IS_NOT_EMPTY()),
+<<<<<<< HEAD
     #Field('Author_First_Name', requires=IS_NOT_EMPTY()),
     #Field('Author_Last_Name', requires=IS_NOT_EMPTY()),
+=======
+#    Field('Author_First_Name', requires=IS_NOT_EMPTY()),
+#    Field('Author_Last_Name'),
+>>>>>>> forcing me to commit
     Field('Genre'),
     Field('Publisher'),
     Field('Publisher_Date'),
@@ -128,7 +133,6 @@ db.Book_Shelf_Items.is_active.readable = db.Book_Shelf_Items.is_active.writable 
 db.Book_Shelf_Items.Book_Shelf_id.writable = db.Book_Shelf_Items.Book_Shelf_id.readable = False
     
 db.Comments.Book_Profile_id.requires = IS_IN_DB(db, db.Book_Profile.id, '%(Title)s')
-#'Comments.Book_Profile_id')
 db.Comments.Body.requires = IS_NOT_EMPTY()
 db.Comments.created_by.readable = db.Comments.created_by.writable = False
 db.Comments.created_on.readable = db.Comments.created_on.writable = False

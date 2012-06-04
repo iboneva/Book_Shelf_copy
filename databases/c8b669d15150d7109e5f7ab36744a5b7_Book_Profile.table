@@ -27,6 +27,7 @@ p12
 ssS'author_first_name'
 p13
 (dp14
+<<<<<<< HEAD
 S'sortable'
 p15
 I4
@@ -34,6 +35,15 @@ sS'type'
 p16
 S'string'
 p17
+=======
+S'type'
+p15
+S'string'
+p16
+sS'sortable'
+p17
+I4
+>>>>>>> forcing me to commit
 sS'sql'
 p18
 S'CHAR(512)'
@@ -41,10 +51,25 @@ p19
 ssS'is_active'
 p20
 (dp21
+<<<<<<< HEAD
+=======
 g4
 S'boolean'
 p22
 sg6
+I10
+sg7
+S'CHAR(1)'
+p23
+ssS'genre'
+p24
+(dp25
+>>>>>>> forcing me to commit
+g4
+S'boolean'
+p22
+sg6
+<<<<<<< HEAD
 I10
 sg7
 S'CHAR(1)'
@@ -75,9 +100,43 @@ p31
 (dp32
 g4
 g11
+=======
+I5
+sg7
+S'CHAR(512)'
+p26
+ssS'created_on'
+p27
+(dp28
+g4
+S'datetime'
+p29
+sg6
+I11
+sg7
+S'TIMESTAMP'
+p30
+ssS'modified_on'
+p31
+(dp32
+g4
+g29
+sg6
+I13
+sg7
+S'TIMESTAMP'
+p33
+ssS'id'
+p34
+(dp35
+g4
+S'id'
+p36
+>>>>>>> forcing me to commit
 sg6
 I5
 sg7
+<<<<<<< HEAD
 S'CHAR(512)'
 p33
 ssS'id'
@@ -89,13 +148,24 @@ p36
 sg6
 I1
 sg7
+=======
+>>>>>>> forcing me to commit
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
 p37
 ssS'link_to_buy'
 p38
 (dp39
+<<<<<<< HEAD
 S'sortable'
 p40
+=======
+S'type'
+p40
+S'string'
+p41
+sS'sortable'
+p42
+>>>>>>> forcing me to commit
 I8
 sS'type'
 p41
@@ -169,22 +239,34 @@ p63
 ssS'author_last_name'
 p64
 (dp65
+<<<<<<< HEAD
 g15
 I5
 sg16
 g17
 sg18
-S'CHAR(512)'
+=======
+S'type'
 p66
-ssS'details'
+S'string'
 p67
-(dp68
+sS'sortable'
+p68
+I5
+sS'sql'
+p69
+>>>>>>> forcing me to commit
+S'CHAR(512)'
+p70
+ssS'details'
+p71
+(dp72
 g4
 S'text'
-p69
+p73
 sg6
 I9
 sg7
 S'TEXT'
-p70
+p74
 ss.

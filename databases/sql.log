@@ -175,3 +175,21 @@ timestamp: 2012-06-04T13:26:30.308832
 ALTER TABLE Book_Profile ADD author_first_name CHAR(512);
 timestamp: 2012-06-04T13:26:30.343979
 ALTER TABLE Book_Profile ADD author_last_name CHAR(512);
+timestamp: 2012-06-04T13:41:55.800479
+CREATE TABLE Book_Profile(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ISBN CHAR(512),
+    Title CHAR(512),
+    Author_First_Name CHAR(512),
+    Author_Last_Name CHAR(512),
+    Genre CHAR(512),
+    Publisher CHAR(512),
+    Publisher_Date CHAR(512),
+    Picture CHAR(512),
+    Details TEXT,
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
